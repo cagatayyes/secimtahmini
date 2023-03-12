@@ -1,0 +1,7 @@
+const Cumhurbaskani = {
+	ERGODAN: "RECEP TAYYİP ERDOĞAN",
+	KILICDAROGLU: "KEMAL KILIÇDAROĞLU",
+	INCE: "MUHARREM İNCE",
+	OGAN: "SİNAN OĞAN",
+	DIGER: "DİĞER",
+};
