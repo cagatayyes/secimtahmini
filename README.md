@@ -1,9 +1,10 @@
-# TurkeyVisited
+# Turkiye Election Results Forecast 
 
-Mark the cities you have visited in Turkey and share the map!
+Mark the cities on a map that which candidate you think will win and share the map!
 
-Türkiye'de ziyaret ettiğiniz illeri haritadan işaretleyin ve paylaşın!
+Haritada hangi adayın kazanacağını düşündüğünüzü işaretleyin ve haritayı paylaşın!
 
-https://ozanyerli.github.io/turkeyvisited/
 
-![image](images/turkeyvisited.png)
+Thanks https://github.com/ozanyerli for https://ozanyerli.github.io/turkeyvisited/
+
+![image](images/turkiye-elections.png)

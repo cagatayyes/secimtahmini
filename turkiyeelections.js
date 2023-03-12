@@ -173,7 +173,7 @@ d3.json("./data/tr-cities.json").then(function (data) {
 						"Seçilen İl: " + selectedCities.length + "/81";
 				}
 
-				if (selectedCities.length === 5) {
+				if (selectedCities.length === totalCityCount) {
 					document.getElementById("selected-cities").style.display =
 						"none";
 
