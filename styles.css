@@ -2,6 +2,7 @@ html {
     height: 100%;
     background-color: #e3e2df;
     background-size: cover;
+     font-family: Arial !important;
 }
 
 #welcome_text {
@@ -16,33 +17,28 @@ html {
 }
 
 #map_container {
-    /*border: 3px solid white;
-    border-radius: 10px; */
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
     width: 1250px;
-    height: 450px;
+    height: 550px;
     background-color: #e3e2df;
 }
 
 #download_button {
-    margin-left: 335px;
-    margin-top: 1em;
-    padding: 0.5em 1.7em;
-    border: 0.16em solid rgb(255, 255, 255);
-    border-radius: 2em;
-    box-sizing: border-box;
+    margin-top: 20px;
+    border: 1px solid #000;
+    border-radius: 15px;
     text-decoration: none;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
     color: #000000;
-    text-shadow: 0 0.04em 0.04em rgba(255, 255, 255, 0.253);
     text-align: center;
     transition: all 0.2s;
+    height: 50px;
+    width: 200px;
 }
 
 #download_button:hover {
@@ -50,9 +46,23 @@ html {
     background-color: #EFAE88;
 }
 
-#github_logo {
-    margin-left: 1000px;
-    opacity: 0.5;
+#contact_email {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.8px;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact_email > img {
+    width: 50px;
+    height: 50px;
 }
 
 #president-container {
@@ -123,4 +133,11 @@ html {
 #won-city-count {
     display: none;
     margin-top: 27px;
+}
+
+#bottom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

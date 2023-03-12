@@ -59,7 +59,6 @@ d3.json("./data/tr-cities.json").then(function (data) {
 		.on("click", function (d, i) {
 			d.noFill = d.noFill || false;
 
-			// d.properties.number
 			if (window.selectedPresidentId >= 0) {
 				switch (window.selectedPresidentId) {
 					case 0:
@@ -133,13 +132,14 @@ d3.json("./data/tr-cities.json").then(function (data) {
 								oganIndex,
 								1
 							);
-							d3.select(this).attr("fill", HOVER_COLOR);
-
 							d3.select(this).attr("fill", MAP_COLOR);
 
 							break;
 						} else {
 							CUMHURBASKANI.OGAN.cities.push(d.properties.number);
+
+							d3.select(this).attr("fill", HOVER_COLOR);
+
 							break;
 						}
 					case 4:
@@ -170,7 +170,7 @@ d3.json("./data/tr-cities.json").then(function (data) {
 					selectedCities.push(d.properties.number);
 
 					document.getElementById("selected-cities").innerHTML =
-						"Seçilen İl: " + selectedCities.length + "/81";
+						"Seçilen İl: " + selectedCities.length + "/" + totalCityCount;
 				}
 
 				if (selectedCities.length === totalCityCount) {
@@ -211,8 +211,6 @@ d3.json("./data/tr-cities.json").then(function (data) {
 			d.noFill = !d.noFill;
 		});
 
-	console.log(data.features.map((f) => f.properties.name));
-
 	g = svg.append("g");
 
 	g.selectAll("text")
@@ -229,7 +227,7 @@ d3.json("./data/tr-cities.json").then(function (data) {
 			return path.centroid(d)[1];
 		})
 		.attr("text-anchor", "middle")
-		.attr("font-size", "10pt")
+		.attr("font-size", "9pt")
 		.attr("style", "color: black;")
 		.attr("style", "pointer-events: none;");
 });
@@ -245,19 +243,19 @@ function downloadMap() {
 
 		const ctx = destCanvas.getContext("2d");
 		ctx.textBaseline = "top";
-		ctx.font = "2em Calibri";
+		ctx.font = "24px Calibri";
 		ctx.fillStyle = "black";
 		ctx.textAlign = "start";
-		var textWidth = ctx.measureText("ozanyerli.github.io/turkeyvisited");
+		var textWidth = ctx.measureText("cagatayyes.github.io/turkey-elections");
 		ctx.fillText(
-			"ozanyerli.github.io/turkeyvisited",
-			10,
-			canvas.height - 25
+			"cagatayyes.github.io/turkiye-elections",
+			canvas.width - 370,
+			5
 		);
-		ctx.fillText(cityCount + "/81", 10, 5);
+		/* ctx.fillText("Türkiye Cumhuriyeti 13. Cumhurbaşkanı", 10, canvas.height - 35); */
 
 		destCanvas.toBlob(function (blob) {
-			saveAs(blob, "turkeyvisited.png");
+			saveAs(blob, "secimSonuclari2023.png");
 		});
 	});
 }

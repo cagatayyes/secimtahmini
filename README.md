@@ -5,6 +5,6 @@ Mark the cities on a map that which candidate you think will win and share the m
 Haritada hangi adayın kazanacağını düşündüğünüzü işaretleyin ve haritayı paylaşın!
 
 
-Thanks https://github.com/ozanyerli for https://ozanyerli.github.io/turkeyvisited/
+Thanks to https://github.com/ozanyerli for https://ozanyerli.github.io/turkeyvisited/
 
 ![image](images/turkiye-elections.png)
