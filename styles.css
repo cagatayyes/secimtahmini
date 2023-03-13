@@ -131,6 +131,7 @@ html {
 #color-box {
     width: 15px;
     height: 15px;
+    margin-bottom: 2px;
 }
 
 #won-city-count {
