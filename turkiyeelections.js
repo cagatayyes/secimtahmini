@@ -273,15 +273,15 @@ function downloadMap() {
 
 		const ctx = destCanvas.getContext("2d");
 		ctx.textBaseline = "top";
-		ctx.font = "24px Calibri";
+		ctx.font = "14px Calibri";
 		ctx.fillStyle = "black";
 		ctx.textAlign = "start";
 		var textWidth = ctx.measureText(
-			"cagatayyes.github.io/turkey-elections"
+			"cagatayyes.github.io/secimtahmini"
 		);
 		ctx.fillText(
-			"cagatayyes.github.io/turkiye-elections",
-			canvas.width - 370,
+			"cagatayyes.github.io/secimtahmini",
+			canvas.width - 200,
 			5
 		);
 		/* ctx.fillText("Türkiye Cumhuriyeti 13. Cumhurbaşkanı", 10, canvas.height - 35); */
