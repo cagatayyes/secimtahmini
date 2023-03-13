@@ -39,6 +39,7 @@ html {
     transition: all 0.2s;
     height: 50px;
     width: 200px;
+    cursor: pointer;
 }
 
 #download_button:hover {
