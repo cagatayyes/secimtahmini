@@ -1,17 +1,14 @@
 let HOVER_COLOR = "#EFAE88";
-
 const MAP_COLOR = "#fff2e3";
-
-const CUMHUR_COLOR = "#ff8700";
-const MILLET_COLOR = "#ff2400";
-const HDP_COLOR = "#800080";
+const ERDOGAN_COLOR = "#ff8700";
+const KILICDAROGLU_COLOR = "#ff2400";
 const INCE_COLOR = "#0d5ea6";
 const OGAN_COLOR = "#800000";
 const OTHER_COLOR = "#09471a";
+/* const HDP_COLOR = "#800080"; */
 
 let cityCount = 0;
 const totalCityCount = 81;
-
 let selectedCities = [];
 
 const CUMHURBASKANI = {
@@ -58,17 +55,63 @@ d3.json("./data/tr-cities.json").then(function (data) {
 		})
 		.on("click", function (d, i) {
 			d.noFill = d.noFill || false;
+			const selectedCityCode = d.properties.number;
+			// ŞU AN CALISIYOR KODU SADELEŞTİR. TODO
+			if (d.noFill) {
+				// SEÇİLİ
+
+				const selectedPartyColor = this.getAttribute("fill");
+
+				switch (selectedPartyColor) {
+					case ERDOGAN_COLOR:
+						const erdoganIndex =
+							CUMHURBASKANI.ERDOGAN.cities.indexOf(
+								selectedCityCode
+							);
+						CUMHURBASKANI.ERDOGAN.cities.splice(erdoganIndex, 1);
+						break;
+					case KILICDAROGLU_COLOR:
+						const kilicdarogluIndex =
+							CUMHURBASKANI.KILICDAROGLU.cities.indexOf(
+								selectedCityCode
+							);
+						CUMHURBASKANI.KILICDAROGLU.cities.splice(
+							kilicdarogluIndex,
+							1
+						);
+						break;
+					case INCE_COLOR:
+						const inceIndex =
+							CUMHURBASKANI.INCE.cities.indexOf(selectedCityCode);
+						CUMHURBASKANI.INCE.cities.splice(inceIndex, 1);
+						break;
+					case OGAN_COLOR:
+						const oganIndex =
+							CUMHURBASKANI.OGAN.cities.indexOf(selectedCityCode);
+						CUMHURBASKANI.OGAN.cities.splice(oganIndex, 1);
+						break;
+					case OTHER_COLOR:
+						const otherIndex =
+							CUMHURBASKANI.DIGER.cities.indexOf(
+								selectedCityCode
+							);
+						CUMHURBASKANI.DIGER.cities.splice(otherIndex, 1);
+						break;
+					default:
+						break;
+				}
+			}
 
 			if (window.selectedPresidentId >= 0) {
 				switch (window.selectedPresidentId) {
 					case 0:
 						const erdoganIndex =
 							CUMHURBASKANI.ERDOGAN.cities.indexOf(
-								d.properties.number
+								selectedCityCode
 							);
 
 						if (erdoganIndex >= 0) {
-							const temp = CUMHURBASKANI.ERDOGAN.cities.splice(
+							CUMHURBASKANI.ERDOGAN.cities.splice(
 								erdoganIndex,
 								1
 							);
@@ -76,19 +119,16 @@ d3.json("./data/tr-cities.json").then(function (data) {
 
 							break;
 						} else {
-							CUMHURBASKANI.ERDOGAN.cities.push(
-								d.properties.number
-							);
+							CUMHURBASKANI.ERDOGAN.cities.push(selectedCityCode);
 							d3.select(this).attr("fill", HOVER_COLOR);
 
 							break;
 						}
 					case 1:
-						const inceIndex = CUMHURBASKANI.INCE.cities.indexOf(
-							d.properties.number
-						);
+						const inceIndex =
+							CUMHURBASKANI.INCE.cities.indexOf(selectedCityCode);
 						if (inceIndex >= 0) {
-							const temp = CUMHURBASKANI.INCE.cities.splice(
+							CUMHURBASKANI.INCE.cities.splice(
 								inceIndex,
 								1
 							);
@@ -96,7 +136,7 @@ d3.json("./data/tr-cities.json").then(function (data) {
 
 							break;
 						} else {
-							CUMHURBASKANI.INCE.cities.push(d.properties.number);
+							CUMHURBASKANI.INCE.cities.push(selectedCityCode);
 							d3.select(this).attr("fill", HOVER_COLOR);
 
 							break;
@@ -104,31 +144,29 @@ d3.json("./data/tr-cities.json").then(function (data) {
 					case 2:
 						const kilicdarogluIndex =
 							CUMHURBASKANI.KILICDAROGLU.cities.indexOf(
-								d.properties.number
+								selectedCityCode
 							);
 						if (kilicdarogluIndex >= 0) {
-							const temp =
-								CUMHURBASKANI.KILICDAROGLU.cities.splice(
-									kilicdarogluIndex,
-									1
-								);
+							CUMHURBASKANI.KILICDAROGLU.cities.splice(
+								kilicdarogluIndex,
+								1
+							);
 							d3.select(this).attr("fill", MAP_COLOR);
 
 							break;
 						} else {
 							CUMHURBASKANI.KILICDAROGLU.cities.push(
-								d.properties.number
+								selectedCityCode
 							);
 							d3.select(this).attr("fill", HOVER_COLOR);
 
 							break;
 						}
 					case 3:
-						const oganIndex = CUMHURBASKANI.OGAN.cities.indexOf(
-							d.properties.number
-						);
+						const oganIndex =
+							CUMHURBASKANI.OGAN.cities.indexOf(selectedCityCode);
 						if (oganIndex >= 0) {
-							const temp = CUMHURBASKANI.OGAN.cities.splice(
+							CUMHURBASKANI.OGAN.cities.splice(
 								oganIndex,
 								1
 							);
@@ -136,18 +174,19 @@ d3.json("./data/tr-cities.json").then(function (data) {
 
 							break;
 						} else {
-							CUMHURBASKANI.OGAN.cities.push(d.properties.number);
+							CUMHURBASKANI.OGAN.cities.push(selectedCityCode);
 
 							d3.select(this).attr("fill", HOVER_COLOR);
 
 							break;
 						}
 					case 4:
-						const otherIndex = CUMHURBASKANI.DIGER.cities.indexOf(
-							d.properties.number
-						);
+						const otherIndex =
+							CUMHURBASKANI.DIGER.cities.indexOf(
+								selectedCityCode
+							);
 						if (otherIndex >= 0) {
-							const temp = CUMHURBASKANI.DIGER.cities.splice(
+							CUMHURBASKANI.DIGER.cities.splice(
 								otherIndex,
 								1
 							);
@@ -155,9 +194,7 @@ d3.json("./data/tr-cities.json").then(function (data) {
 
 							break;
 						} else {
-							CUMHURBASKANI.DIGER.cities.push(
-								d.properties.number
-							);
+							CUMHURBASKANI.DIGER.cities.push(selectedCityCode);
 							d3.select(this).attr("fill", HOVER_COLOR);
 
 							break;
@@ -165,25 +202,22 @@ d3.json("./data/tr-cities.json").then(function (data) {
 					default:
 						break;
 				}
-				//displayCityCountByCandidate();
-				if (!isCitySelected(d.properties.number)) {
-					selectedCities.push(d.properties.number);
+				if (!isCitySelected(selectedCityCode)) {
+					selectedCities.push(selectedCityCode);
 
 					document.getElementById("selected-cities").innerHTML =
-						"Seçilen İl: " + selectedCities.length + "/" + totalCityCount;
+						"Seçilen İl: " +
+						selectedCities.length +
+						"/" +
+						totalCityCount;
 				}
 
-				if (selectedCities.length === totalCityCount) {
+				if (selectedCities.length > 0) {
 					document.getElementById("selected-cities").style.display =
 						"none";
 
-					document.getElementById(
-						"selected-president"
-					).style.display = "none";
-
-					document.getElementById(
-						"won-city-count"
-					).style.display = "flex";
+					document.getElementById("won-city-count").style.display =
+						"flex";
 
 					document.getElementById(
 						"erdogan-won-city-count"
@@ -193,18 +227,14 @@ d3.json("./data/tr-cities.json").then(function (data) {
 						"kilicdaroglu-won-city-count"
 					).innerHTML = CUMHURBASKANI.KILICDAROGLU.cities.length;
 
+					document.getElementById("ince-won-city-count").innerHTML =
+						CUMHURBASKANI.INCE.cities.length;
 
-					document.getElementById(
-						"ince-won-city-count"
-					).innerHTML = CUMHURBASKANI.INCE.cities.length;
+					document.getElementById("ogan-won-city-count").innerHTML =
+						CUMHURBASKANI.OGAN.cities.length;
 
-					document.getElementById(
-						"ogan-won-city-count"
-					).innerHTML = CUMHURBASKANI.OGAN.cities.length;
-
-					document.getElementById(
-						"others-won-city-count"
-					).innerHTML = CUMHURBASKANI.DIGER.cities.length;
+					document.getElementById("others-won-city-count").innerHTML =
+						CUMHURBASKANI.DIGER.cities.length;
 				}
 			}
 
@@ -246,7 +276,9 @@ function downloadMap() {
 		ctx.font = "24px Calibri";
 		ctx.fillStyle = "black";
 		ctx.textAlign = "start";
-		var textWidth = ctx.measureText("cagatayyes.github.io/turkey-elections");
+		var textWidth = ctx.measureText(
+			"cagatayyes.github.io/turkey-elections"
+		);
 		ctx.fillText(
 			"cagatayyes.github.io/turkiye-elections",
 			canvas.width - 370,
@@ -266,27 +298,21 @@ function selectPresident(president) {
 
 	switch (window.selectedPresidentId) {
 		case 0:
-			HOVER_COLOR = CUMHUR_COLOR;
+			HOVER_COLOR = ERDOGAN_COLOR;
 			break;
 		case 1:
 			HOVER_COLOR = INCE_COLOR;
-
 			break;
 		case 2:
-			HOVER_COLOR = MILLET_COLOR;
-
+			HOVER_COLOR = KILICDAROGLU_COLOR;
 			break;
 		case 3:
 			HOVER_COLOR = OGAN_COLOR;
-
 			break;
 		case 4:
 			HOVER_COLOR = OTHER_COLOR;
-
 			break;
 		default:
-			HOVER_COLOR = HOVER_COLOR;
-
 			break;
 	}
 
@@ -297,22 +323,5 @@ function selectPresident(president) {
 function isCitySelected(city) {
 	const index = selectedCities.indexOf(city);
 
-	if (index >= 0) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-function displayCityCountByCandidate() {
-	document.getElementById("erdogan-won-cities").innerHTML =
-		"Kazanılan İl: " + CUMHURBASKANI.ERDOGAN.cities.length;
-	document.getElementById("kilicdaroglu-won-cities").innerHTML =
-		"Kazanılan İl: " + CUMHURBASKANI.KILICDAROGLU.cities.length;
-	document.getElementById("ince-won-cities").innerHTML =
-		"Kazanılan İl: " + CUMHURBASKANI.INCE.cities.length;
-	document.getElementById("ogan-won-cities").innerHTML =
-		"Kazanılan İl: " + CUMHURBASKANI.OGAN.cities.length;
-	document.getElementById("diger-won-cities").innerHTML =
-		"Kazanılan İl: " + CUMHURBASKANI.DIGER.cities.length;
+	return index >= 0;
 }

@@ -77,7 +77,7 @@ html {
     flex-direction: row;
 }
 
-#candidate-select-button {
+#candidate-select-button{
     height: 40px;
     width: 124px;
     cursor: pointer;
@@ -85,10 +85,13 @@ html {
 }
 
 #selected-president {
-    margin: 15px auto 15px;
+    text-align: center;
+    margin: 10px 0;
 }
+
 #selected-cities {
-    margin: 0 auto 20px;
+    display: none;
+    margin: 10px auto 10px;
 }
 
 #candidate-container {
@@ -100,7 +103,6 @@ html {
 
 .won-cities {
     margin-top: 5px;
-    display: none;
 }
 
 #result-info {
@@ -131,7 +133,6 @@ html {
 }
 
 #won-city-count {
-    display: none;
     margin-top: 27px;
 }
 
